@@ -1,0 +1,71 @@
+.styleonelevel{
+font-family: "Consolas", monospace;
+color:blue;
+text-align:center;
+text-indent:1cm;
+font-size:24pt;
+}
+.styletwolevel{
+font-family: "Consolas", monospace;
+color:blue;
+text-indent:1cm;
+font-size:18pt;
+}
+.styletrheelevel{
+line-height: 1.5;
+font-size:14pt;
+}
+.soder dd{
+font-size:18pt;
+margin: 0 0 20px 24px;
+padding: 0;
+}
+.ul1 {
+font-family: "Consolas", monospace;
+font-size:14pt;
+list-style-image: url(https://srv2.imgonline.com.ua/result_img/imgonline-com-ua-Resize-qmwrG1uz3EdfSYX.jpg); 
+}
+.ul2 {
+font-family: "Consolas", monospace;
+font-size:14pt;
+list-style-image: url(https://srv4.imgonline.com.ua/result_img/imgonline-com-ua-Resize-FdvSh4ydfDf.jpg); 
+}
+.ul3 {
+font-family: "Consolas", monospace;
+font-size:14pt;
+}
+  table.t1 {
+    margin: 1em auto;
+    border-collapse: collapse;
+    font-family: "Consolas", monospace;
+  }
+  .t1 th, .t1 td {
+    padding: 4px 8px;
+  }
+  .t1 thead th {
+    background: #4f81bd;  
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+  }
+  .t1 tr {
+    border-right: 1px solid #95b3d7;
+  }
+
+  .t1 tbody tr:nth-child(odd) {
+    background: #dbe5f0;..
+  }
+  .t1 tbody td, .t1 tbody tr:nth-child(even) td {
+    border-right: 1px solid #95b3d7;
+  }
+  .t1 tfoot th {
+    background: #4f81bd;
+    text-align: left;
+    font-weight: normal;
+    font-size: 10px;
+    color: #fff;
+  }
+ 
+
+
+ 

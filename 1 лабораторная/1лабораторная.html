@@ -1,0 +1,165 @@
+<HTML>
+<HEAD> 
+<Link rel="stylesheet" href ="css.css" href ="normalize.css">
+<Link rel="stylesheet" href ="normalize.css">
+<TITLE>Ассемблер (Assembly) — язык программирования</TITLE>
+</HEAD>
+<body>
+<p class="styleonelevel">Ассемблер (Assembly) — язык программирования</p>
+<center>
+<IMG SRC="https://i.pinimg.com/originals/25/a8/5d/25a85d9e5057430d82273a3c75e73014.png" WIDTH="500" HEIGHT="500">
+</center>
+<dl class="soder">
+<dt class="styletwolevel">Содержание:</dt>
+<dd><a href="#1">О языке</a></dd>
+<dd><a href="#2">Иcтория создания Ассемблерa</a></dd> 
+<dd><a href="#3">Примеры кода на Ассемблере</a></dd>
+</dl>
+
+<p class="styletwolevel" <p id= "1"><u>О языке</u></p>
+<IMG SRC="https://media.proglib.io/posts/2019/11/11/769693075c3d5d7ef30299c1b221d3ae.png"  ALIGN='left'  WIDTH="350" HEIGHT="215">
+<p class="styletrheelevel">Ассемблер (Assembly) — язык программирования, понятия которого отражают архитектуру электронно-вычислительной машины. Язык ассемблера — символьная форма записи машинного кода, использование которого упрощает написание машинных программ. Для одной и той же ЭВМ могут быть разработаны разные языки ассемблера. В отличие от языков высокого уровня абстракции, в котором многие проблемы реализации алгоритмов скрыты от разработчиков, язык ассемблера тесно связан с системой команд микропроцессора. Для идеального микропроцессора, у которого система команд точно соответствует языку программирования, ассемблер вырабатывает по одному машинному коду на каждый оператор языка. На практике для реальных микропроцессоров может потребоваться несколько машинных команд для реализации одного оператора языка.</p>
+
+<IMG SRC="https://upload.wikimedia.org/wikipedia/ru/d/d8/Manchester_Mark2.jpg" align="right"  WIDTH="330" HEIGHT="250" ALT="Golang" >
+
+<p class="styletwolevel" align="center"<p id= "2"><u>Иcтория создания Ассемблерa</u></p>
+<p class="styletrheelevel">Язык программирования ассемблер существует с первых дней вычислительной техники. Его развитие можно проследить до первых электронных компьютеров, построенных в 1940-х и 1950-х. <br>
+Один из первых примеров языка ассемблера — язык, используемый для программирования компьютера <i>Manchester Mark 1</i>. Его разработала группа исследователей под руководством Фредерика Уильямса и Тома Килберна из Манчестерского университета в Англии. Manchester Mark 1 был одним из первых компьютеров, использующих архитектуру с хранимой программой. Его язык применяли для написания программ, которые хранились в его памяти. <br>
+Компьютерное оборудование развивалось — совершенствовались и языки ассемблера. Добавили новые инструкции и функции для более сложных операций и новых аппаратных возможностей. Сегодня язык ассемблера по-прежнему используют в специализированных областях. Например, в программировании встроенных систем и низкоуровневом системном программировании.</p>
+
+<p class="styletwolevel" <p id= "3"><u>Пример кода</u></p>
+<pre> <span style="font-size: 14pt">
+```
+ 1 section .data
+ 2 msg db 'Hello, world!', 0
+ 3 section .text
+ 4 global _start
+ 5 _start:
+ 6 mov eax, 4 ; System call for write
+ 7 mov ebx, 1 ; File descriptor for stdout
+ 8 mov ecx, msg ; Address of message to print
+ 9 mov edx, 13 ; Length of message
+10 int 0x80 ; Call kernel
+11 mov eax, 1 ; System call for exit
+12 xor ebx, ebx ; Exit code 0
+13 int 0x80 ; Call kernel
+```</span></pre>
+
+<table class="t1">
+  <caption><b>Достоинства и недостатки Assembly</b></caption>
+  <thead>
+    <tr>
+      <th>Достоинства</th>
+      <th>Недостатки</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th colspan="4"></th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr><td>Эффективность</td><td>Сложность</td></tr>
+    <tr><td>Небольшой размер кода</td><td>Ограниченная абстракция</td></tr>
+    <tr><td>Переносимость</td><td>Сопровождение</td></tr>
+    <tr><td>Отладка</td><td>Отладка</td></tr>
+  </tbody>
+</table>
+
+<p class="styletrheelevel"><b>Достоинства:</b></p>
+<ul class="ul1">
+  <li><big>Эффективность:</big> программы на языке ассемблера можно оптимизировать для конкретной архитектуры — это делает их эффективными и быстрыми.</li>
+  <li><big>Небольшой размер кода:</big> программы на языке ассемблера обычно меньше программ на языках более высокого уровня. Это важно в определенных встроенных системах или других средах с ограниченным объемом памяти.</li>
+  <li><big>Переносимость:</big> язык используют для написания кода, который можно скомпилировать для работы на разных платформах с соответствующими модификациями.</li>
+  <li><big>Отладка:</big> язык ассемблера полезен для отладки низкоуровневых проблем в программах или оборудовании.</li>
+</ul>
+
+<p class="styletrheelevel"><b>Недостатки:</b></p>
+<ul class="ul2">
+  <li><big>Сложность:</big> язык ассемблера гораздо сложнее написать и понять, чем языки более высокого уровня. Программирование на ассемблере утомительно и занимает много времени: разработчики должны писать код даже для самых простых операций.</li>
+  <li><big>Ограниченная абстракция:</big> в языке нет многих абстракций и высокоуровневых конструкций — это затрудняет написание сложных программ.</li>
+  <li><big>Сопровождение:</big> программы на ассемблере трудно поддерживать, потому что изменения в аппаратном или программном обеспечении требуют значительных обновлений кода.</li>
+  <li><big>Отладка:</big> это еще и минус, потому что отладка кода на языке ассемблера сложная — проблемы низкого уровня трудно диагностировать и исправить.</li>
+</ul>
+
+<p class="styletwolevel">Список использованных тегов:</p>
+<ul class="ul3">
+<li>html</li>
+<li>head</li>
+<li>title</li>
+<li>body</li>
+<li>center</li>
+<li>p</li>
+<li>img src</li>
+<li>dl</li>
+<li>dt</li>
+<li>dd</li>
+<li>br</li>
+<li>i</li>
+<li>a</li>
+<li>font</li>
+<li>ul</li>
+<li>ol</li> 
+<li>li</li>
+<li>class</li>
+<li>table</li>
+<li>caption</li>
+<li>thead</li>
+<li>br</li>
+<li>h</li>
+<li>tfoot</li>
+<li>thody</li>
+<li>td</li>
+<li>b</li>
+<li>u</li>
+<li>span</li>
+<li>big</li>
+</ul>
+
+<p class="styletwolevel">Список использованных css-свойств:</p>
+<ol class="ul3">
+<li>bgcolor</li>
+<li>color</li>
+<li>size</li>
+<li>align</li>
+<li>id</li>
+<li>list-style</li>
+<li>widht</li>
+<li>neight</li>
+<li>outline</li>
+<li>border-collapse</li>
+<li>text-transform</li>
+<li>font-weight</li>
+<li>border-bottom</li>
+<li>background</li>
+<li>display</li>
+<li>box-sizing</li>
+<li>overflow</li>
+<li>font-family</li>
+<li>background-color</li>
+<li>font-weight</li>
+<li>line-height</li>
+<li>position</li>
+<li>vertical-align</li>
+<li>top</li>
+<li>border-style</li>
+<li>webkit-appearance</li>
+<li>outline</li>
+<li>max-width</li>
+<li>white-space</li>
+<li>vertical-align</li>
+<li>outline-offset</li>
+<li>alt</li>
+<li>colspan</li>
+<li>font</li>
+<li>font-size</li>
+<li>text-align</li>
+<li>text-indent</li>
+<li>margin</li>
+<li>padding</li>
+<li>border</li>
+</ol>
+</BODY>
+</HTML>
+<center>
+<a href="https://vk.com/valek_ugolek">Контакты автора статьи</a>
