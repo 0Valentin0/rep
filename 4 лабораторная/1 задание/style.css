@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+    background-color: #87CEEB;
+    /* Цвет неба */
+}
+
+.tree {
+    width: 120px;
+}
+
+.tree-layer,
+.tree-log {
+    margin: 0 auto;
+}
+
+.tree-layer {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 60px solid green;
+}
+
+.tree-layer:nth-child(2) {
+    margin-top: -30px;
+    border-left-width: 50px;
+    border-right-width: 50px;
+    border-bottom-width: 80px;
+}
+
+.tree-layer:nth-child(3) {
+    margin-top: -50px;
+    border-left-width: 60px;
+    border-right-width: 60px;
+    border-bottom-width: 100px;
+}
+
+.tree-log {
+    width: 20px;
+    height: 30px;
+    background-color: saddlebrown;
+}
+
+.one_line,
+.two_line {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.one_line {
+    margin-bottom: -180px;
+    margin-left: -40px;
+}
