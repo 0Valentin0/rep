@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Processing</title>
+</head>
+
+<body>
+
+
+    <label for="inputArray">Введите массив чисел (через запятую):</label>
+    <input type="text" id="inputArray">
+    <button onclick="processArray()">Обработать массив</button>
+
+    <h2>Результаты:</h2>
+    <div id="outputResult"></div>
+
+    <script>
+        function processArray() {
+            const inputArrayStr = document.getElementById('inputArray').value;
+
+
+            const inputArray = inputArrayStr.split(',').map(Number);
+
+            // Часть А: Вычисляем произведение элементов, удовлетворяющих условию
+            let product = 1;
+            for (let i = 0; i < inputArray.length; i++) {
+                const currentNumber = inputArray[i];
+                if (Math.cos(currentNumber) >= 0) {
+                    product *= currentNumber;
+                }
+            }
+
+            // Часть Б: Удаляем элементы, модуль целой части которых не изменяется при перестановке цифр
+            const filteredArray = inputArray.filter(number => {
+                const integerPart = Math.abs(Math.trunc(number));
+                const reversedInteger = parseInt(integerPart.toString().split('').reverse().join(''), 10);
+                return integerPart !== reversedInteger;
+            });
+
+
+            const outputResult = document.getElementById('outputResult');
+            outputResult.innerHTML = `
+                <p>Произведение элементов с неотрицательным косинусом: ${product}</p>
+                <p>Массив после удаления элементов: [${filteredArray.join(', ')}]</p>
+            `;
+        }
+    </script>
+</body>
+
+</html>
