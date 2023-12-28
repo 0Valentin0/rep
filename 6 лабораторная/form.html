@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Покупка авиабилетов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <form id="ticketForm">
+        <div class="form">
+            <div class="input_box">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+            </div>
+
+            <div class="input_box">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email@gmail.com" required>
+            </div>
+
+            <div class="input_box">
+                <label for="destination">Место назначения:</label>
+                <input type="text" id="destination" name="destination" placeholder="Введите место назначения" required>
+            </div>
+
+            <div class="input_box">
+                <label for="departure-date">Дата отправления:</label>
+                <input type="date" id="departure-date" name="departure-date" required>
+            </div>
+
+            <div class="input_box">
+                <label for="ticket-class">Класс билета:</label>
+                <select id="ticket-class" name="ticket-class">
+                    <option value="economy">Эконом</option>
+                    <option value="business">Бизнес</option>
+                    <option value="first-class">Первый класс</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="button" onclick="validateForm()">Купить билет</button>
+
+        <!-- Добавленный элемент для вывода сообщений -->
+        <div id="message"></div>
+
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var destination = document.getElementById('destination').value;
+            var departureDate = document.getElementById('departure-date').value;
+
+            var messageContainer = document.getElementById('message');
+
+            if (name === '' || email === '' || destination === '' || departureDate === '') {
+                alert('Пожалуйста, заполните все обязательные поля.');
+                return false; // Возвращаем false, чтобы форма не отправлялась
+            }
+
+            // Дополнительные проверки на корректность значений могут быть добавлены здесь
+
+            // Если все проверки пройдены, вывести данные в alert и очистить поля формы
+            var message = 'Данные успешно отправлены:\nИмя: ' + name + '\nEmail: ' + email +
+                '\nМесто назначения: ' + destination + '\nДата отправления: ' + departureDate +
+                '\nКласс билета: ' + document.getElementById('ticket-class').value;
+
+            alert(message);
+
+            // Очистить поля формы
+            document.getElementById('ticketForm').reset();
+
+            return false; // Возвращаем false, чтобы форма не отправлялась
+        }
+    </script>
+
+</body>
+
+</html>
