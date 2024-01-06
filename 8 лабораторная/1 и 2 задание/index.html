@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица умножения и календарь</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        td {
+            background-color: #fff;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        
+        #calendar {
+            width: 100%;
+            max-width: 500px;
+            font: monospace;
+            line-height: 1.2em;
+            font-size: 15px;
+            text-align: center;
+        }
+        
+        #calendar thead tr:last-child {
+            font-size: small;
+            color: rgb(85, 85, 85);
+        }
+        
+        #calendar thead tr:nth-child(1) td:nth-child(2) {
+            color: rgb(50, 50, 50);
+        }
+        
+        #calendar thead tr:nth-child(1) td:nth-child(1):hover,
+        #calendar thead tr:nth-child(1) td:nth-child(3):hover {
+            cursor: pointer;
+        }
+        
+        #calendar tbody td {
+            color: rgb(44, 86, 122);
+        }
+        
+        #calendar tbody td:nth-child(n+6),
+        #calendar .holiday {
+            color: rgb(231, 140, 92);
+        }
+        
+        #calendar tbody td.today {
+            background: rgb(220, 0, 0);
+            color: #fff;
+        }
+        
+        .holiday {
+            background-color: #ffcccc;
+        }
+        
+        .today.holiday {
+            border: 1px solid #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Задание 1: Таблица умножения -->
+    <h2>Таблица умножения</h2>
+    <table>
+        <tr>
+            <th>&times;</th>
+
+            <script>
+                for (let i = 0; i <= 10; i++) {
+                    document.write(`<th>${i}</th>`);
+                }
+            </script>
+        </tr>
+        <script>
+            for (let i = 0; i <= 10; i++) {
+                document.write('<tr>');
+                document.write(`<th>${i}</th>`);
+                for (let j = 0; j <= 10; j++) {
+                    document.write(`<td>${i * j}</td>`);
+                }
+                document.write('</tr>');
+            }
+        </script>
+    </table>
+
+
+    <!-- Задание 2  -->
+    <h2>Календарь</h2>
+    <table id="calendar">
+        <thead>
+            <tr>
+                <td>‹
+                    <td colspan="5">
+                        <td>›
+                            <tr>
+                                <td>Пн
+                                    <td>Вт
+                                        <td>Ср
+                                            <td>Чт
+                                                <td>Пт
+                                                    <td>Сб
+                                                        <td>Вс
+                                                            <tbody>
+    </table>
+
+    <script>
+        function calendar(id, year, month) {
+            var Dlast = new Date(year, month + 1, 0).getDate(),
+                D = new Date(year, month, Dlast),
+                DNlast = new Date(D.getFullYear(), D.getMonth(), Dlast).getDay(),
+                DNfirst = new Date(D.getFullYear(), D.getMonth(), 1).getDay(),
+                calendar = '<tr>',
+                monthNames = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                holidays = {
+                    12: {
+                        1: "Новый год",
+                        7: "Рождество",
+                        14: "Старый Новый год",
+                        20: "Праздник",
+                        25: "Праздник",
+                    }, // Декабрь
+                    11: {
+                        2: "День программиста",
+                        7: "Праздник",
+                        14: "Праздник",
+                        20: "Праздник",
+                        25: "Праздник"
+                    } // Январь
+                };
+
+            if (DNfirst !== 0) {
+                for (var i = 1; i < DNfirst; i++) calendar += '<td>';
+            } else {
+                for (var i = 0; i < 6; i++) calendar += '<td>';
+            }
+
+            for (var i = 1; i <= Dlast; i++) {
+                var isHoliday = holidays[month] && holidays[month][i];
+                var title = isHoliday ? holidays[month][i] : "";
+
+                if (i === new Date().getDate() && D.getFullYear() === new Date().getFullYear() && D.getMonth() === new Date().getMonth()) {
+                    calendar += '<td class="today' + (isHoliday ? ' holiday' : '') + '" title="' + title + '">' + i;
+                } else {
+                    calendar += '<td' + (isHoliday ? ' class="holiday" title="' + title + '"' : '') + '>' + i;
+                }
+
+                if (new Date(D.getFullYear(), D.getMonth(), i).getDay() === 0) {
+                    calendar += '<tr>';
+                }
+            }
+
+            for (var i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
+            document.querySelector('#' + id + ' tbody').innerHTML = calendar;
+            document.querySelector('#' + id + ' thead td:nth-child(2)').innerHTML = monthNames[D.getMonth()] + ' ' + D.getFullYear();
+            document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.month = D.getMonth();
+            document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.year = D.getFullYear();
+
+            if (document.querySelectorAll('#' + id + ' tbody tr').length < 6) {
+                document.querySelector('#' + id + ' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
+            }
+        }
+
+        calendar("calendar", new Date().getFullYear(), new Date().getMonth());
+
+
+        document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+            calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month) - 1);
+        }
+
+
+        document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
+            calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month) + 1);
+        }
+    </script>
+
+
+</body>
+
+</html>
