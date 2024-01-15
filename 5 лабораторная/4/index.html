@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск повторяющихся символов</title>
+</head>
+
+<body>
+
+    <script>
+        function findDuplicateCharacters(inputString) {
+            var charCount = {};
+            var duplicates = [];
+
+            // Подсчет количества встреч каждого символа
+            for (var i = 0; i < inputString.length; i++) {
+                var currentChar = inputString[i];
+                charCount[currentChar] = (charCount[currentChar] || 0) + 1;
+            }
+
+            // Поиск повторяющихся символов
+            for (var char in charCount) {
+                if (charCount[char] > 1) {
+                    duplicates.push(char);
+                }
+            }
+
+            return duplicates;
+        }
+
+        function displayDuplicates() {
+            var inputString = document.getElementById('inputString').value;
+            var result = findDuplicateCharacters(inputString);
+
+            document.getElementById('result').innerText = 'Повторяющиеся символы: ' + result.join(', ');
+        }
+    </script>
+
+    <h2>Поиск повторяющихся символов в строке</h2>
+    <label for="inputString">Введите строку:</label>
+    <input type="text" id="inputString" placeholder="Введите строку">
+
+    <button onclick="displayDuplicates()">Найти повторяющиеся символы</button>
+
+    <p id="result"></p>
+
+</body>
+
+</html>
